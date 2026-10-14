@@ -1,0 +1,18 @@
+---
+import Island from '@components/crit-ratio/crit-ratio.svelte'
+import ExternalA from '@components/external-a.svelte'
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Layout from '@layout'
+export { getStaticPaths } from '@i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<Layout title={t("crit-ratio.title")} grid>
+  <Island client:load {lang} />
+  <div class="flex">
+    <span class="mr-2">{t("crit-ratio.references")}:</span>
+    <ExternalA href="https://blog.luis.fun/gi-atk-crit-ratio/" class="text-link">{t("crit-ratio.blog-title")}</ExternalA>
+  </div>
+</Layout>

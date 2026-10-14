@@ -1,0 +1,47 @@
+---
+import Collapse from '@components/collapse.svelte'
+import ExternalA from '@components/external-a.svelte'
+import Guide from '@components/home/guide.svelte'
+import Nav from '@components/home/nav.svelte'
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Layout from '@layout'
+export { getStaticPaths } from '@i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const thx = {
+  'home.developers': [['Luis', 'https://luis.fun', '🤡']],
+  'home.resources': [
+    ['Dimbreath', 'https://gitlab.com/Dimbreath/AnimeGameData', 'Game Data'],
+    ['Anonbelle', 'https://gi.yatta.moe', 'Image Resources'],
+    ['Algoinde', 'https://enka.network', 'Showcase API'],
+  ],
+  'home.translators': [
+    ['박작가', '', '한국어'],
+    ['Danilo Silva', '', 'Português'],
+  ],
+}
+---
+
+<Layout title={t("home.title")} grid defaultTitle>
+	<div>
+		<Nav {lang} />
+	</div>
+	<div>
+		<Guide client:load {lang} />
+	</div>
+	<Collapse title={t("home.thanks")} arrow>
+		{(Object.keys(thx) as (keyof typeof thx)[]).map(key => (
+			<div class="mt-6 mb-3 first:mt-3">{t(key)}</div>
+			<>
+				{thx[key].map(e => (
+					<div>
+						{e[1] ? <ExternalA class="text-link" href={e[1]} aria-label={e[0]}>{e[0]}</ExternalA> : e[0]}
+						— {e[2]}
+					</div>
+				))}
+			</>
+		))}
+	</Collapse>
+</Layout>

@@ -1,0 +1,84 @@
+<style is:global>
+  @font-face {
+    font-family: 'Genshin';
+    src: url('/fonts/genshin.woff2') format('woff2');
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'GenshinJa';
+    src: url('/fonts/genshin-ja.woff2') format('woff2');
+    font-display: swap;
+  }
+  :root {
+    --background: #0c0f1d;
+    color: rgba(255, 255, 255, 0.85);
+    background-color: var(--background);
+  }
+  html {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    font-size: 16px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 896px) {
+    html {
+      font-size: 18px;
+    }
+  }
+  a {
+    cursor: pointer;
+  }
+  .font-genshin {
+    font-family: "Genshin", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  }
+  .bg-rank-5 {
+    background-image: url(/images/icon-bg/5.webp);
+  }
+  .bg-rank-4 {
+    background-image: url(/images/icon-bg/4.webp);
+  }
+  .bg-rank-3 {
+    background-image: url(/images/icon-bg/3.webp);
+  }
+  .bg-rank-2 {
+    background-image: url(/images/icon-bg/2.webp);
+  }
+  .bg-rank-1 {
+    background-image: url(/images/icon-bg/1.webp);
+  }
+  .no-spin::-webkit-inner-spin-button,
+  .no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance:textfield;
+  }
+  .collapse:not(.collapse-close) > :where(input[type="checkbox"]:checked ~ .collapse-title) > .svg-down {
+    transform: rotate(180deg);
+  }
+  .shadow-background {
+    box-shadow: 0 0 .5rem var(--background);
+  }
+  .-transform-1\/2 {
+    transform: translate(-50%, -50%);
+  }
+  .-transform-x-1\/2 {
+    transform: translateX(-50%);
+  }
+  .-transform-y-1\/2 {
+    transform: translateY(-50%);
+  }
+  .scrollbar-hidden {
+    scrollbar-width: none;
+  }
+  .max-h-1\/2 {
+    max-height: 50%;
+  }
+  .w-1\/10 {
+    width: 10%;
+  }
+  .divider {
+    @apply before:bg-border after:bg-border before:h-px after:h-px;
+  }
+  .tab {
+    @apply rounded-none text-text-sub !border-b-4 checked:text-text checked:bg-neutral checked:!border-primary ps-2 pe-2;
+  }
+</style>

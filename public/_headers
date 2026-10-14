@@ -1,0 +1,8 @@
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+/*/translator-tools/
+  X-Robots-Tag: noindex
+
+/*
+  X-Frame-Options: DENY

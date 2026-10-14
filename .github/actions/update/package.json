@@ -1,0 +1,9 @@
+{
+	"name": "update",
+	"main": "src/index.js",
+	"type": "module",
+	"devDependencies": {
+		"puppeteer": "^24.1.0",
+		"sharp": "^0.33.5"
+	}
+}

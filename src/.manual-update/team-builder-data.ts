@@ -1,0 +1,1282 @@
+import type { Avatar } from '@components/team-builder/types'
+
+export const avatar: Avatar[] = [
+  {
+    name: 'Vodyanitsa',
+    score: [0, 0, 1, 2], // 実際は3はありそうだが、組み合わせを重視するために2
+    stat: ['HP'],
+    coop: [
+      { score: -1, add: [{ elem: ['Pyro', 'Geo'], roll: ['sub'] }] },
+      {
+        score: 1,
+        or: [
+          [
+            { elem: ['Cryo'], roll: ['main'] },
+            { elem: ['Hydro'], roll: ['sub'] },
+          ],
+          [
+            { elem: ['Hydro'], roll: ['main'] },
+            { elem: ['Cryo'], roll: ['sub'] },
+          ],
+          'Vesna',
+          'Yumemizuki Mizuki',
+        ],
+      },
+      {
+        score: 4,
+        or: [
+          [{ elem: ['Cryo'], roll: ['main'] }],
+          [
+            { elem: ['Hydro'], roll: ['main'] },
+            { elem: ['Cryo'], roll: ['sub'] },
+          ],
+          'Vesna',
+          'Yumemizuki Mizuki',
+        ],
+      },
+    ],
+    filter: { score: 6, roll: 'healer' },
+  },
+  {
+    name: 'Vesna',
+    score: [2, 0, 0, 0], // 実際は3はありそうだが、組み合わせを重視するために2
+    dmg: ['element'],
+    stat: ['ATK'],
+    explor: ['fly', 4],
+    coop: [
+      { score: -3, add: ['Furina'] },
+      { score: -2, add: [{ group: ['moonsign'] }] }, // たぶん相性よくない？（検証不足）
+      { score: -2, add: [{ elem: ['Pyro', 'Electro'], roll: ['sub'] }] },
+      { score: 1, add: [[{ elem: ['Cryo'] }, { elem: ['Cryo'] }]] },
+      { score: 4, add: [{ elem: ['Cryo'] }] },
+    ],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Odette',
+    score: [0, 2, 0, 0], // 実際は3はありそうだが、組み合わせを重視するために2
+    dmg: ['element'],
+    stat: ['ATK'],
+    coop: [
+      { score: -3, add: ['Furina'] },
+      { score: -2, add: [{ group: ['moonsign'] }] }, // たぶん相性よくない？（検証不足）
+      { score: -2, add: [{ elem: ['Pyro', 'Geo'], roll: ['sub'] }] },
+      { score: 4, or: [{ elem: ['Electro', 'Anemo'], roll: ['main'] }, 'Sandrone', 'Wriothesley'] }, // Travelerは氷のみ個別
+    ],
+    filter: { score: 6, roll: 'sub' },
+  },
+  {
+    name: 'Sandrone',
+    score: [2, 0, 0, 0], // 実際は3はありそうだが、組み合わせを重視するために2
+    dmg: ['charge', 'element'],
+    stat: ['ATK', 'EM'],
+    coop: [
+      { score: -3, add: ['Furina'] },
+      { score: -2, add: [{ trigger: ['normal'] }] },
+      { score: -1, add: [{ elem: ['Pyro', 'Geo'], roll: ['sub'] }] },
+      {
+        score: 2,
+        add: [{ elem: ['Electro'] }, { elem: ['Electro'], roll: ['sub'] }],
+        or: [
+          [{ elem: ['Electro'] }, { elem: ['Electro'] }],
+          [{ elem: ['Electro'] }, { elem: ['Cryo'] }],
+        ],
+      },
+    ],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Lohen',
+    group: ['hexerei'],
+    score: [4, 0, 0, 0],
+    dmg: ['charge', 'skill'],
+    stat: ['ATK'],
+    coop: [
+      {
+        score: 1,
+        add: [{ group: ['hexerei'] }, { elem: ['Pyro', 'Dendro', 'Electro', 'Geo', 'Hydro'], roll: ['sub'] }],
+      },
+    ],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Nicole',
+    group: ['hexerei'],
+    score: [0, 0, 2, 3],
+    coop: [
+      { score: 1, add: [{ roll: ['sub'], stat: ['ATK'] }, { group: ['hexerei'] }] },
+      { score: 2, add: [{ roll: ['main'], stat: ['ATK'] }] },
+    ],
+    filter: { score: 6, roll: 'healer' },
+  },
+  {
+    name: 'Linnea',
+    score: [0, 3, 0, 3], // 実際は4はありそうだが、組み合わせを重視するために3
+    group: ['moonsign'],
+    stat: ['DEF'],
+    dmg: ['element'],
+    coop: [
+      { score: 1, add: [{ group: ['moonsign'] }, { roll: ['main'], elem: ['Geo'] }] },
+      {
+        score: 2,
+        add: [{ elem: ['Hydro'] }],
+      },
+    ],
+    filter: { score: 6, roll: 'healer' },
+  },
+  {
+    name: 'Varka',
+    score: [1, 0, 0, 0], // 実際は2-3はありそう
+    group: ['hexerei'],
+    stat: ['ATK'],
+    dmg: ['normal'],
+    explor: ['fly', 1],
+    coop: [
+      { score: -1, add: ['Faruzan'] },
+      // 編成重視の調節用
+      { score: -1, add: [{ roll: ['sub', 'support', 'healer'] }] },
+      { score: 1, add: [{ group: ['hexerei'] }] },
+      {
+        score: 3,
+        add: [{ elem: ['Anemo'] }],
+        or: [
+          [{ elem: ['Pyro'] }, { elem: ['Pyro'] }],
+          [{ elem: ['Hydro'] }, { elem: ['Hydro'] }],
+          [{ elem: ['Electro'] }, { elem: ['Electro'] }],
+          [{ elem: ['Cryo'] }, { elem: ['Cryo'] }],
+        ],
+      },
+    ],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Zibai',
+    score: [3, 0, 0, 0],
+    group: ['moonsign'],
+    burstDep: 2,
+    stat: ['EM', 'DEF'],
+    coop: [
+      { score: 1, add: [{ group: ['moonsign'] }] },
+      { score: 3, add: [{ elem: ['Hydro'] }] },
+    ],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Columbina',
+    score: [1, 3, 0, 0],
+    group: ['moonsign'],
+    burstDep: 2,
+    dmg: ['element'],
+    stat: ['EM', 'HP'],
+    coop: [
+      // mainアタッカー
+      { score: 5, add: [['Lauma', { roll: ['sub', 'support'] }, { roll: ['healer'] }]] },
+      // subアタッカー
+      {
+        score: 1,
+        add: [{ group: ['moonsign'] }, { elem: ['Electro', 'Geo'], roll: ['main', 'sub'] }],
+        or: ['Ineffa', 'Lauma'],
+      },
+    ],
+    filter: { score: 6, roll: 'sub' },
+  },
+  {
+    name: 'Durin',
+    score: [0, 6, 0, 0],
+    group: ['hexerei'],
+    burstDep: 1,
+    dmg: ['burst'],
+  },
+  {
+    name: 'Nefer',
+    score: [1, 0, 0, 0],
+    group: ['moonsign'],
+    dmg: ['element'],
+    stat: ['EM'],
+    coop: [
+      // 過剰評価を抑制
+      { score: -5, add: [{ trigger: ['normal'] }, 'Nilou'] },
+      { score: -3, add: [{ elem: ['Pyro', 'Electro'] }, 'Mona', 'Furina'] },
+      { score: 1, add: [{ elem: ['Dendro'] }, 'Aino'] },
+      { score: 2, add: ['Lauma'] },
+      { score: 3, add: [{ group: ['moonsign'] }, { elem: ['Hydro'] }] },
+    ],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Flins',
+    score: [3, 0, 0, 0],
+    group: ['moonsign'],
+    burstDep: 3,
+    dmg: ['element'],
+    stat: ['ATK'],
+    coop: [
+      { score: -3, add: ['Lauma'] },
+      { score: -1, add: [{ elem: ['Anemo'] }] },
+      { score: 1, add: [{ elem: ['Hydro'] }, [{ elem: ['Anemo'] }, { elem: ['Electro'] }]] },
+      { score: 4, or: [{ group: ['moonsign'] }] },
+    ],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Lauma',
+    score: [0, 0, 1, 0],
+    group: ['moonsign'],
+    dmg: ['element'],
+    stat: ['EM'],
+    coop: [
+      { score: -1, add: [{ group: ['moonsign'] }] },
+      { score: 1, add: ['Nilou'] },
+      { score: 4, or: [{ elem: ['Hydro'], roll: ['main', 'sub'] }, 'Nilou'] },
+    ],
+    filter: { score: 5, roll: 'support' },
+  },
+  {
+    name: 'Ineffa',
+    score: [0, 3, 0, 2],
+    group: ['moonsign'],
+    dmg: ['element'],
+    stat: ['ATK', 'EM'],
+    coop: [{ score: 2, add: [{ elem: ['Hydro'], roll: ['main', 'sub'] }] }],
+    filter: { score: 5, roll: 'sub' },
+  },
+  {
+    name: 'Skirk',
+    score: [3, 0, 0, 0], // 実スコア4くらいはあるが、組み合わせを重視するために3
+    dmg: ['normal'],
+    stat: ['ATK'],
+    explor: ['run', 1],
+    coop: [
+      { score: 3, add: [[{ elem: ['Cryo', 'Hydro'] }, { elem: ['Cryo', 'Hydro'] }, { elem: ['Cryo', 'Hydro'] }]] },
+    ],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Escoffier',
+    score: [0, 3, 0, 4],
+    burstDep: 2,
+    dmg: ['skill'],
+    stat: ['ATK'],
+    coop: [
+      { score: 2, add: [[{ elem: ['Cryo', 'Hydro'] }, { elem: ['Cryo', 'Hydro'] }, { elem: ['Cryo', 'Hydro'] }]] },
+    ],
+    filter: { score: 6, roll: 'healer' },
+  },
+  {
+    name: 'Varesa',
+    score: [6, 0, 0, 0],
+    dmg: ['plunge'],
+    explor: ['run', 3],
+    coop: [
+      { score: -2, add: [{ trigger: ['normal'] }] },
+      { score: -1, add: ['Xianyun'] },
+      { score: 1, add: ['Chevreuse'] },
+    ],
+  },
+  {
+    name: 'Yumemizuki Mizuki',
+    score: [1, 0, 0, 0],
+    dmg: ['element'],
+    explor: ['fly', 2],
+    coop: [
+      { score: -3, add: ['Bennett', 'Faruzan', { trigger: ['normal'] }] },
+      {
+        score: 1,
+        add: [
+          { elem: ['4elem'], roll: ['sub'] },
+          [
+            { elem: ['4elem'], roll: ['sub'] },
+            { elem: ['4elem'], roll: ['sub'] },
+          ],
+          { elem: ['Pyro'] },
+          { elem: ['Hydro'] },
+          { elem: ['Cryo'] },
+          { elem: ['Electro'] },
+        ],
+      },
+    ],
+    filter: { score: 5, roll: 'main' },
+  },
+  {
+    name: 'Citlali',
+    score: [0, 0, 1, 1],
+    coop: [
+      // 溶解する回数が減るため
+      {
+        score: -2,
+        add: [
+          [
+            { roll: ['main'], elem: ['Pyro'] },
+            { roll: ['sub'], elem: ['Pyro'] },
+          ],
+        ],
+      },
+      {
+        score: 1,
+        add: [
+          { roll: ['main'], elem: ['Pyro', 'Hydro'] },
+          { roll: ['main'], elem: ['Pyro'] },
+        ],
+      },
+      {
+        score: 3,
+        add: [{ roll: ['main', 'sub'], elem: ['Pyro', 'Hydro'] }],
+      },
+    ],
+    filter: { score: 5, roll: 'healer' },
+  },
+  {
+    name: 'Mavuika',
+    score: [6, 3, 0, 0],
+    dmg: ['charge'],
+    explor: ['fly', 2],
+    coop: [{ score: 1, add: ['Chasca', 'Xilonen', 'Kinich', 'Mualani'] }],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Chasca',
+    score: [1, 0, 0, 0],
+    dmg: ['charge'],
+    explor: ['fly', 3],
+    coop: [
+      { score: -3, add: [{ trigger: ['normal'] }] },
+      {
+        score: 1,
+        add: [
+          { elem: ['4elem'] },
+          { elem: ['4elem'], roll: ['sub'] },
+          [{ elem: ['4elem'] }, { elem: ['4elem'] }],
+          { elem: ['Pyro'] },
+          { elem: ['Hydro'] },
+          { elem: ['Cryo'] },
+          { elem: ['Electro'] },
+        ],
+      },
+    ],
+    filter: { score: 5, roll: 'main' },
+  },
+  {
+    name: 'Xilonen',
+    score: [0, 0, 1, 2],
+    explor: ['climb', 3],
+    coop: [
+      {
+        score: 4,
+        or: [
+          { roll: ['main'], elem: ['4elem'] },
+          [
+            { roll: ['sub'], elem: ['4elem'] },
+            { roll: ['sub'], elem: ['4elem'] },
+          ],
+        ],
+      },
+    ],
+    filter: { score: 6, roll: 'healer' },
+  },
+  {
+    name: 'Kinich',
+    score: [4, 0, 0, 0],
+    dmg: ['skill'],
+    explor: ['fly', 2],
+    coop: [{ score: 1, add: [{ elem: ['Pyro'] }, [{ elem: ['Pyro'] }, { elem: ['Pyro'] }]] }],
+    filter: { score: 5, roll: 'main' },
+  },
+  {
+    name: 'Mualani',
+    score: [5, 0, 0, 0],
+    dmg: ['skill'],
+    stat: ['HP'],
+    explor: ['boat', 2],
+    coop: [
+      { score: -2, add: [{ trigger: ['normal'] }] },
+      { score: 1, add: [{ elem: ['Pyro'] }] },
+      { score: 2, add: ['Dehya'] },
+    ],
+  },
+  {
+    name: 'Emilie',
+    score: [0, 3, 0, 0],
+    burstDep: 1,
+    dmg: ['skill'],
+    coop: [
+      { score: 1, add: [{ elem: ['Pyro'], roll: ['main', 'sub'] }] },
+      { score: 2, add: [{ elem: ['Pyro'] }] },
+    ],
+    filter: { score: 5, roll: 'sub' },
+  },
+  {
+    name: 'Sigewinne',
+    score: [0, 0, 0, 4],
+    coop: [{ score: 1, add: [{ roll: ['sub'], dmg: ['skill'] }] }],
+    filter: { score: 4, roll: 'healer' },
+  },
+  {
+    name: 'Clorinde',
+    score: [4, 0, 0, 0],
+    dmg: ['normal'],
+    coop: [{ score: 2, add: [{ roll: ['sub'] }] }],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Arlecchino',
+    score: [6, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Chiori',
+    score: [0, 4, 0, 0],
+    dmg: ['skill'],
+    stat: ['DEF'],
+    coop: [{ score: 2, or: ['Arataki Itto', 'Albedo', 'Zhongli', 'Ningguang'] }],
+    filter: { score: 5, roll: 'sub' },
+  },
+  {
+    name: 'Xianyun',
+    score: [0, 0, 2, 3],
+    explor: ['fly', 2],
+    coop: [
+      { score: 2, add: ['Diluc'] },
+      { score: 3, add: [{ roll: ['main'], dmg: ['plunge'] }] },
+    ],
+    filter: { score: 5, roll: 'healer' },
+  },
+  {
+    name: 'Navia',
+    score: [4, 3, 0, 0],
+    dmg: ['skill'],
+    coop: [{ score: 2, add: [{ elem: ['4elem'] }] }],
+    filter: { score: 5, roll: 'main' },
+  },
+  {
+    name: 'Furina',
+    score: [0, 6, 0, 5],
+    burstDep: 2,
+    dmg: ['skill'],
+    stat: ['HP'],
+    explor: ['boat', 3],
+    coop: [
+      { score: -2, add: [[{ group: ['moonsign'] }, { group: ['moonsign'] }]] },
+      { score: -1, add: [{ group: ['moonsign'] }] },
+      {
+        score: 1,
+        add: ['Escoffier', 'Sigewinne', 'Baizhu', 'Sangonomiya Kokomi', 'Jean', 'Charlotte', 'Yaoyao', 'Barbara'],
+      },
+    ],
+  },
+  {
+    name: 'Wriothesley',
+    score: [5, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Neuvillette',
+    score: [6.1, 0, 0, 0],
+    dmg: ['charge'],
+    stat: ['HP'],
+    coop: [
+      { score: -2, add: [{ trigger: ['normal'] }] },
+      { score: -1, add: [{ elem: ['Hydro'] }] },
+    ],
+  },
+  {
+    name: 'Lyney',
+    score: [4, 0, 0, 0],
+    dmg: ['charge'],
+    coop: [{ score: 2, add: [[{ elem: ['Pyro'] }, { elem: ['Pyro'] }]] }],
+    filter: { score: 5, roll: 'main' },
+  },
+  {
+    name: 'Baizhu',
+    score: [0, 0, 0, 5],
+    burstDep: 3,
+  },
+  {
+    name: 'Dehya',
+    score: [3, 0, 1, 0],
+    burstDep: 3,
+    dmg: ['burst'],
+    stat: ['ATK', 'HP'],
+    explor: ['run-speed', 1],
+  },
+  {
+    name: 'Alhaitham',
+    score: [4, 0, 0, 0],
+    dmg: ['normal'],
+    stat: ['ATK', 'EM'],
+    coop: [{ score: 2, add: [{ elem: ['Electro'] }] }],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Wanderer',
+    score: [4, 0, 0, 0],
+    dmg: ['normal'],
+    explor: ['fly', 3],
+    coop: [{ score: 1, add: [{ elem: ['Pyro', 'Cryo'] }] }],
+    filter: { score: 5, roll: 'main' },
+  },
+  {
+    name: 'Nahida',
+    score: [0, 3, 0, 0],
+    dmg: ['skill'],
+    stat: ['EM'],
+    coop: [
+      { score: 1, add: [{ roll: ['main', 'sub'], stat: ['EM'] }] },
+      { score: 2, add: [{ roll: ['main', 'sub'], elem: ['Pyro', 'Hydro', 'Electro'] }] },
+    ],
+    filter: { score: 6, roll: 'sub' },
+  },
+  {
+    name: 'Nilou',
+    score: [1, 0, 1, 0],
+    dmg: ['normal'],
+    stat: ['HP'],
+    coop: [
+      { score: 1, add: [[{ elem: ['Hydro'] }, { elem: ['Dendro'] }, { elem: ['Dendro'] }]] },
+      { score: 4, add: [[{ elem: ['Dendro'] }, { elem: ['Hydro', 'Dendro'] }, { elem: ['Hydro', 'Dendro'] }]] },
+    ],
+    filter: { score: 5, roll: 'support' },
+  },
+  {
+    name: 'Cyno',
+    score: [5, 0, 0, 0],
+    burstDep: 3,
+  },
+  {
+    name: 'Tighnari',
+    score: [4, 0, 0, 0],
+    dmg: ['charge'],
+    stat: ['ATK', 'EM'],
+    coop: [
+      { score: -2, add: [{ trigger: ['normal'] }] },
+      { score: 1, add: [{ elem: ['Electro'] }] },
+    ],
+    filter: { score: 5, roll: 'main' },
+  },
+  {
+    name: 'Yelan',
+    score: [0, 6, 0, 0],
+    burstDep: 2,
+    dmg: ['burst'],
+    stat: ['HP'],
+    trigger: ['normal'],
+    explor: ['run', 2],
+    coop: [{ score: -1, add: [[{ group: ['moonsign'] }, { group: ['moonsign'] }]] }],
+  },
+  {
+    name: 'Kamisato Ayato',
+    score: [5, 3, 0, 0],
+    burstDep: 2,
+    dmg: ['normal'],
+  },
+  {
+    name: 'Yae Miko',
+    score: [0, 5, 0, 0],
+    dmg: ['skill'],
+  },
+  {
+    name: 'Shenhe',
+    score: [0, 0, 1, 0],
+    burstDep: 3,
+    coop: [
+      { score: 1, add: [{ roll: ['main'], elem: ['Cryo'] }] },
+      { score: 3, or: [{ roll: ['main', 'sub'], elem: ['Cryo'] }, 'Chasca'] },
+    ],
+    filter: { score: 5, roll: 'support' },
+  },
+  {
+    name: 'Arataki Itto',
+    score: [5, 0, 0, 0],
+    burstDep: 3,
+    dmg: ['charge'],
+    stat: ['ATK', 'DEF'],
+  },
+  {
+    name: 'Sangonomiya Kokomi',
+    score: [3, 0, 0, 5],
+    burstDep: 1,
+    dmg: ['normal'],
+    stat: ['HP'],
+  },
+  {
+    name: 'Raiden Shogun',
+    score: [5, 0, 0, 0],
+    burstDep: 2,
+    dmg: ['burst'],
+    coop: [
+      { score: -2, add: ['Beidou'] },
+      { score: 1, add: [{ roll: ['sub'], dmg: ['burst'] }] },
+    ],
+    filter: { score: 6, roll: 'main' },
+  },
+  {
+    name: 'Yoimiya',
+    score: [5, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Kamisato Ayaka',
+    score: [4.5, 3.5, 0, 0],
+    burstDep: 3,
+    dmg: ['normal', 'burst'],
+    explor: ['boat', 2],
+    coop: [
+      { score: -0.5, add: [{ roll: ['main', 'sub'], elem: ['Pyro'] }] },
+      { score: 0.5, add: [{ roll: ['main', 'sub'], elem: ['Hydro'] }] },
+    ],
+    filter: { score: 5, roll: 'main' },
+  },
+  {
+    name: 'Kaedehara Kazuha',
+    score: [0, 0, 5, 0],
+    explor: ['climb', 1],
+    coop: [{ score: -3, add: [{ roll: ['main'], elem: ['Dendro', 'Anemo', 'Geo'] }] }],
+  },
+  {
+    name: 'Eula',
+    score: [4, 0, 0, 0],
+    burstDep: 3,
+    dmg: ['normal', 'burst'],
+    coop: [{ score: 1, add: [{ roll: ['sub'], elem: ['Electro'] }] }],
+    filter: { score: 5, roll: 'main' },
+  },
+  {
+    name: 'Hu Tao',
+    score: [5, 0, 0, 0],
+    dmg: ['charge'],
+    coop: [{ score: 1, add: [{ roll: ['sub'], elem: ['Hydro'] }] }],
+  },
+  {
+    name: 'Xiao',
+    score: [6, 0, 0, 0],
+    burstDep: 2,
+    dmg: ['plunge'],
+    coop: [{ score: -2, add: [{ trigger: ['normal'] }] }],
+  },
+  {
+    name: 'Ganyu',
+    score: [5, 3, 0, 0],
+    burstDep: 1,
+    dmg: ['charge', 'burst'],
+    coop: [{ score: -2, add: [{ trigger: ['normal'] }] }],
+  },
+  {
+    name: 'Albedo',
+    score: [0, 5, 0, 0],
+    group: ['hexerei'],
+    dmg: ['skill'],
+    coop: [{ score: 1, add: [{ group: ['hexerei'] }] }],
+  },
+  {
+    name: 'Zhongli',
+    score: [0, 0, 0, 5],
+  },
+  {
+    name: 'Tartaglia',
+    score: [5, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Klee',
+    score: [5, 0, 0, 0],
+    group: ['hexerei'],
+    dmg: ['normal', 'charge'],
+    coop: [{ score: 1, add: [{ group: ['hexerei'] }] }],
+  },
+  {
+    name: 'Venti',
+    score: [3, 3, 0, 0],
+    group: ['hexerei'],
+    burstDep: 2,
+    explor: ['fly', 1],
+    dmg: ['burst'],
+    coop: [{ score: 2, or: [{ roll: ['main'] }, { group: ['hexerei'] }] }],
+    filter: { score: 5, roll: 'sub' },
+  },
+  {
+    name: 'Keqing',
+    score: [4, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Mona',
+    score: [0, 4, 0, 0],
+    group: ['hexerei'],
+    burstDep: 2,
+    dmg: ['burst'],
+    coop: [{ score: 1, add: [{ group: ['hexerei'] }] }],
+    explor: ['boat', 1],
+  },
+  {
+    name: 'Qiqi',
+    score: [0, 0, 0, 4],
+    burstDep: 4,
+  },
+  {
+    name: 'Diluc',
+    score: [4, 0, 0, 0],
+    burstDep: 1,
+    dmg: ['normal'],
+  },
+  {
+    name: 'Jean',
+    score: [0, 0, 0, 4],
+    burstDep: 3,
+  },
+
+  {
+    name: 'Alyosha',
+    score: [0, 0, 1, 1],
+    burstDep: 2,
+    coop: [{ score: 4, or: [['Sandrone'], ['Odette', { elem: ['Electro', 'Anemo'], roll: ['main'] }]] }],
+    filter: { score: 4, roll: 'support' },
+  },
+  {
+    name: 'Prune',
+    group: ['hexerei'],
+    score: [0, 0, 2, 0],
+    burstDep: 3,
+    coop: [
+      {
+        score: 1,
+        add: [{ group: ['hexerei'] }, { roll: ['sub'] }, { roll: ['main'], elem: ['Anemo'], group: ['hexerei'] }],
+      },
+    ],
+    filter: { score: 4, roll: 'support' },
+  },
+  {
+    name: 'Illuga',
+    score: [0, 0, 1, 0],
+    group: ['moonsign'],
+    burstDep: 1,
+    coop: [{ score: 5, add: [{ roll: ['main', 'sub'], elem: ['Geo'], group: ['moonsign'] }] }],
+    filter: { score: 5, roll: 'support' },
+  },
+  {
+    name: 'Jahoda',
+    score: [0, 0, 0, 4],
+    group: ['moonsign'],
+    burstDep: 3,
+    coop: [{ score: 1, add: [{ roll: ['main', 'sub'], dmg: ['element'] }] }],
+    filter: { score: 5, roll: 'healer' },
+  },
+  {
+    name: 'Aino',
+    score: [0, 0, 1, 0],
+    group: ['moonsign'],
+    burstDep: 2,
+    coop: [{ score: 1, add: [{ group: ['moonsign'] }] }],
+    filter: { score: 4, roll: 'support' },
+  },
+  {
+    name: 'Dahlia',
+    score: [0, 0, 2, 2],
+    burstDep: 2,
+    coop: [{ score: 1, add: [{ elem: ['Cryo'] }, { roll: ['main'], trigger: ['normal'] }] }],
+  },
+  {
+    name: 'Ifa',
+    score: [1, 0, 0, 1],
+    dmg: ['element'],
+    explor: ['fly', 3],
+    coop: [
+      { score: -3, add: ['Bennett', 'Faruzan', { roll: ['main'] }] },
+      {
+        score: 1,
+        add: [
+          [
+            { elem: ['4elem'], roll: ['sub'] },
+            { elem: ['4elem'], roll: ['sub'] },
+          ],
+          { elem: ['Hydro'], roll: ['sub'] },
+          { elem: ['Electro'], roll: ['sub'] },
+          [{ elem: ['Hydro', 'Electro'] }, { elem: ['Hydro', 'Electro'] }, { elem: ['Hydro', 'Electro'] }],
+          'Ororon',
+        ],
+      },
+    ],
+    filter: { score: 4, roll: 'main' },
+  },
+  {
+    name: 'Iansan',
+    score: [0, 0, 2, 1],
+    burstDep: 2,
+    coop: [
+      { score: 1, add: ['Yumemizuki Mizuki', 'Clorinde', 'Hu Tao', 'Xiao', 'Gaming'] },
+      { score: 2, add: ['Varesa', 'Mavuika', 'Chasca', 'Kinich', 'Mualani', { roll: ['main'], stat: ['ATK'] }] },
+    ],
+    filter: { score: 6, roll: 'support' },
+  },
+  {
+    name: 'Lan Yan',
+    score: [0, 0, 2, 3],
+    burstDep: 1,
+    coop: [{ score: 1, add: ['Bennett', 'Kujou Sara'] }],
+  },
+  {
+    name: 'Ororon',
+    score: [0, 1, 0, 0],
+    coop: [
+      { score: 1, add: [{ elem: ['Hydro'] }] },
+      { score: 2, add: [{ roll: ['main'], elem: ['Anemo', 'Cryo', 'Dendro', 'Geo', 'Hydro', 'Pyro'] }] },
+    ],
+    filter: { score: 3, roll: 'sub' },
+  },
+  {
+    name: 'Kachina',
+    score: [0, 0, 1, 0],
+    explor: ['climb', 2],
+    coop: [{ score: 2, add: [{ roll: ['main'], elem: ['4elem'] }] }],
+    filter: { score: 3, roll: 'support' },
+  },
+  {
+    name: 'Sethos',
+    score: [3, 0, 0, 0],
+    burstDep: 2,
+    dmg: ['charge'],
+    stat: ['EM'],
+    coop: [{ score: 1, add: [{ roll: ['sub'], elem: ['Dendro'] }] }],
+    filter: { score: 4, roll: 'main' },
+  },
+  {
+    name: 'Gaming',
+    score: [4, 0, 0, 0],
+    burstDep: 2,
+    dmg: ['plunge'],
+    explor: ['run-speed', 1],
+    coop: [{ score: -1, add: [{ trigger: ['normal'] }] }],
+  },
+  {
+    name: 'Chevreuse',
+    score: [0, 0, 1, 1],
+    burstDep: 2,
+    explor: ['run-stamina', 1],
+    coop: [
+      { score: 0.5, add: [{ elem: ['Electro'] }, { elem: ['Pyro'] }] },
+      {
+        score: 3,
+        add: [
+          [{ elem: ['Electro'] }, { elem: ['Electro'] }, { elem: ['Electro'] }],
+          [{ elem: ['Electro'] }, { elem: ['Electro'] }, { elem: ['Pyro'] }],
+          [{ elem: ['Electro'] }, { elem: ['Pyro'] }, { elem: ['Pyro'] }],
+        ],
+      },
+    ],
+    filter: { score: 5, roll: 'support' },
+  },
+  {
+    name: 'Charlotte',
+    score: [0, 0, 0, 4],
+    burstDep: 3,
+  },
+  {
+    name: 'Freminet',
+    score: [3, 0, 0, 0],
+    burstDep: 2,
+    dmg: ['normal'],
+    coop: [{ score: 1, add: [{ elem: ['Electro', 'Hydro'] }] }],
+  },
+  {
+    name: 'Lynette',
+    score: [0, 0, 1, 0],
+    burstDep: 3,
+    coop: [{ score: 1, add: [{ stat: ['ATK'] }] }],
+    filter: { score: 2, roll: 'support' },
+  },
+  {
+    name: 'Kirara',
+    score: [0, 0, 0, 2],
+    burstDep: 1,
+    explor: ['climb', 1],
+  },
+  {
+    name: 'Kaveh',
+    score: [1, 0, 0, 0],
+    burstDep: 3,
+    stat: ['EM'],
+    coop: [
+      { score: 3, add: [{ elem: ['Hydro'] }] },
+      { score: -2, add: [{ elem: ['Pyro', 'Electro'] }] },
+    ],
+    filter: { score: 3, roll: 'main' },
+  },
+  {
+    name: 'Mika',
+    score: [0, 0, 0, 2],
+    burstDep: 3,
+    coop: [
+      { score: 1, add: [{ roll: ['main'], dmg: ['normal'] }] },
+      { score: 2.1, add: ['Eula', 'Freminet', 'Razor'] },
+    ],
+    filter: { score: 4, roll: 'healer' },
+  },
+  {
+    name: 'Yaoyao',
+    score: [0, 0, 0, 4],
+    burstDep: 1,
+  },
+  {
+    name: 'Faruzan',
+    score: [0, 0, 1, 0],
+    burstDep: 3,
+    coop: [
+      { score: -2, add: ['Chasca'] },
+      { score: 4, add: [{ roll: ['main'], elem: ['Anemo'] }] },
+    ],
+    filter: { score: 4, roll: 'support' },
+  },
+  {
+    name: 'Layla',
+    score: [0, 4, 0, 2],
+    burstDep: 1,
+    dmg: ['burst'],
+  },
+  {
+    name: 'Candace',
+    score: [0, 0, 1, 0],
+    burstDep: 2,
+  },
+  {
+    name: 'Dori',
+    score: [0, 0, 0, 3],
+    burstDep: 3,
+  },
+  {
+    name: 'Collei',
+    score: [0, 3, 0, 0],
+    burstDep: 2,
+    dmg: ['burst'],
+  },
+  {
+    name: 'Shikanoin Heizou',
+    score: [2, 0, 0, 0],
+    dmg: ['normal', 'skill'],
+    explor: ['run-stamina', 1],
+    coop: [{ score: 2, add: [{ elem: ['4elem'] }] }],
+    filter: { score: 4, roll: 'main' },
+  },
+  {
+    name: 'Kuki Shinobu',
+    score: [0, 0, 0, 3],
+    coop: [
+      { score: -1, add: [{ roll: ['main', 'sub'], elem: ['Electro'] }] },
+      {
+        score: 2.1,
+        add: [
+          [
+            { roll: ['main', 'sub'], elem: ['Hydro'] },
+            { roll: ['main', 'sub'], elem: ['Dendro'] },
+          ],
+        ],
+      },
+    ],
+    filter: { score: 5, roll: 'healer' },
+  },
+  {
+    name: 'Yun Jin',
+    score: [0, 0, 1, 0],
+    burstDep: 2,
+    coop: [{ score: 3, add: [{ roll: ['main'], dmg: ['normal'] }] }],
+    filter: { score: 3, roll: 'support' },
+  },
+  {
+    name: 'Gorou',
+    score: [0, 0, 1, 1],
+    burstDep: 1,
+    coop: [
+      { score: 1, add: [[{ elem: ['Geo'] }, { elem: ['Geo'] }]] },
+      // support
+      { score: 3, add: [[{ roll: ['main'], elem: ['Geo'], stat: ['DEF'] }, { roll: ['healer'] }]] },
+      // healer
+      {
+        score: -3,
+        add: [
+          [{ roll: ['main'], elem: ['4elem', 'Anemo'] }, { roll: ['sub', 'support'] }, { roll: ['sub', 'support'] }],
+        ],
+      },
+      {
+        score: 3,
+        add: [
+          [
+            { roll: ['main'], elem: ['Geo'], stat: ['DEF'] },
+            { roll: ['sub', 'support'] },
+            { roll: ['sub', 'support'] },
+          ],
+        ],
+      },
+    ],
+    filter: { score: 4, roll: 'support' },
+  },
+  {
+    name: 'Thoma',
+    score: [0, 0, 1, 1],
+    burstDep: 3,
+    trigger: ['normal'],
+    coop: [{ score: 2, add: [[{ elem: ['Hydro'] }, { elem: ['Dendro'] }]] }],
+    filter: { score: 2, roll: 'support' },
+  },
+  {
+    name: 'Kujou Sara',
+    score: [0, 2, 3, 0],
+    burstDep: 2,
+    dmg: ['burst'],
+    coop: [{ score: 2, add: [{ roll: ['main'], elem: ['Electro'], stat: ['ATK'] }] }],
+    filter: { score: 4, roll: 'support' },
+  },
+  {
+    name: 'Sayu',
+    score: [0, 0, 0, 3],
+    burstDep: 3,
+    explor: ['run', 3],
+  },
+  {
+    name: 'Yanfei',
+    score: [4, 0, 0, 0],
+    burstDep: 2,
+    dmg: ['charge'],
+  },
+  {
+    name: 'Rosaria',
+    score: [0, 5, 0, 0],
+    burstDep: 2,
+    explor: ['run-speed', 1],
+  },
+  {
+    name: 'Xinyan',
+    score: [1, 1, 0, 0],
+    burstDep: 1,
+    dmg: ['burst'],
+  },
+  {
+    name: 'Diona',
+    score: [0, 0, 0, 5],
+    burstDep: 2,
+  },
+  {
+    name: 'Sucrose',
+    score: [0, 0, 3, 0],
+    group: ['hexerei'],
+    burstDep: 2,
+    coop: [{ score: 1, add: [{ stat: ['EM'] }] }],
+  },
+  {
+    name: 'Chongyun',
+    score: [2, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Noelle',
+    score: [3, 0, 0, 1],
+    burstDep: 3,
+    dmg: ['normal'],
+    stat: ['ATK', 'DEF'],
+  },
+  {
+    name: 'Bennett',
+    score: [0, 0, 1, 3],
+    burstDep: 2,
+    coop: [{ score: 2, add: [{ roll: ['main'], stat: ['ATK'] }] }],
+    filter: { score: 5, roll: 'healer' },
+  },
+  {
+    name: 'Fischl',
+    score: [0, 4.1, 0, 0],
+    group: ['hexerei'],
+    burstDep: 1,
+    dmg: ['skill'],
+    coop: [
+      {
+        score: 1,
+        or: [[{ roll: ['main'], elem: ['Hydro', 'Pyro'], stat: ['ATK', 'EM'] }, { group: ['hexerei'] }], 'Klee'],
+      },
+    ],
+  },
+  {
+    name: 'Ningguang',
+    score: [3, 0, 1, 0],
+    dmg: ['charge'],
+  },
+  {
+    name: 'Xingqiu',
+    score: [0, 5, 0, 0],
+    burstDep: 2,
+    dmg: ['burst'],
+    trigger: ['normal'],
+  },
+  {
+    name: 'Beidou',
+    score: [0, 5, 0, 0],
+    burstDep: 3,
+    dmg: ['burst'],
+    // trigger: ['normal'],
+  },
+  {
+    name: 'Xiangling',
+    score: [0, 4.5, 0, 0],
+    burstDep: 3,
+    dmg: ['burst'],
+    coop: [{ score: 0.6, add: [{ roll: ['main', 'sub'], elem: ['Hydro'] }] }],
+  },
+  {
+    name: 'Razor',
+    score: [4, 0, 0, 0],
+    group: ['hexerei'],
+    burstDep: 2,
+    dmg: ['normal'],
+    explor: ['run-stamina', 1],
+  },
+  {
+    name: 'Barbara',
+    score: [0, 0, 0, 2],
+    burstDep: 4,
+  },
+  {
+    name: 'Lisa',
+    score: [0, 3, 0, 0],
+    burstDep: 3,
+    dmg: ['burst'],
+  },
+  {
+    name: 'Kaeya',
+    score: [0, 4, 0, 0],
+    burstDep: 2,
+    dmg: ['burst'],
+    explor: ['run-stamina', 1],
+  },
+  {
+    name: 'Amber',
+    score: [0, 2, 0, 0],
+    burstDep: 1,
+    dmg: ['burst'],
+  },
+
+  {
+    name: 'Aloy',
+    score: [2, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Traveler',
+    elem: 'Cryo',
+    score: [2.1, 0, 0, 0], // 一旦風拡散によるsubは無視
+    burstDep: 2,
+    coop: [
+      { score: -3, add: ['Furina'] },
+      { score: -2, add: [{ group: ['moonsign'] }] }, // たぶん相性よくない？（検証不足）
+      { score: -2, add: [{ elem: ['Pyro', 'Geo'], roll: ['sub'] }] },
+      { score: -0.1, add: ['Vodyanitsa'] }, // 調節
+      { score: 4, add: ['Odette', 'Alyosha'] }, // 元々よそのバフ
+      { score: 5, add: [{ elem: ['Electro'], roll: ['sub'] }] }, // ちょっと高い？
+    ],
+    filter: { score: 6.1, roll: 'main' },
+  },
+  {
+    name: 'Traveler',
+    elem: 'Pyro',
+    score: [0, 0, 1, 0],
+    burstDep: 2,
+    coop: [
+      {
+        score: 2,
+        add: [
+          [
+            { roll: ['main', 'sub'], elem: ['Dendro'] },
+            { roll: ['main', 'sub'], elem: ['Hydro'] },
+          ],
+        ],
+      },
+    ],
+    filter: { score: 3, roll: 'support' },
+  },
+  {
+    name: 'Traveler',
+    elem: 'Hydro',
+    score: [0, 1, 0, 0],
+    burstDep: 3,
+  },
+  {
+    name: 'Traveler',
+    elem: 'Dendro',
+    score: [0, 3, 0, 0],
+    burstDep: 3,
+    dmg: ['burst'],
+  },
+  {
+    name: 'Traveler',
+    elem: 'Electro',
+    score: [0, 3, 0, 0],
+    burstDep: 3,
+    dmg: ['burst'],
+    trigger: ['normal'],
+  },
+  {
+    name: 'Traveler',
+    elem: 'Geo',
+    score: [0, 0, 1, 0],
+    burstDep: 1,
+  },
+  {
+    name: 'Traveler',
+    elem: 'Anemo',
+    score: [0, 0, 1, 0],
+    burstDep: 1,
+  },
+  {
+    name: 'Manekin',
+    elem: 'Cryo',
+    score: [1.1, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Manekin',
+    elem: 'Pyro',
+    score: [1.1, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Manekin',
+    elem: 'Hydro',
+    score: [1.1, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Manekin',
+    elem: 'Dendro',
+    score: [1.1, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Manekin',
+    elem: 'Electro',
+    score: [1.1, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Manekin',
+    elem: 'Geo',
+    score: [1.1, 0, 0, 0],
+    dmg: ['normal'],
+  },
+  {
+    name: 'Manekin',
+    elem: 'Anemo',
+    score: [1.1, 0, 0, 0],
+    dmg: ['normal'],
+  },
+]
+
+export const globalCoop = {
+  battleCoop: [
+    {
+      score: 1,
+      add: [
+        // 風バフ
+        [
+          { roll: ['main'], elem: ['4elem'] },
+          { roll: ['support', 'healer'], elem: ['Anemo'] },
+        ],
+      ],
+    },
+  ] as NonNullable<Avatar['coop']>,
+  explorCoop: [{ score: 1, add: [[{ elem: ['Anemo'] }, { elem: ['Anemo'] }]] }] as NonNullable<Avatar['coop']>,
+  avatarNum: avatar.length,
+}
