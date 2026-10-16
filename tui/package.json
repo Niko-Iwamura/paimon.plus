@@ -9,9 +9,6 @@
     "tui:start": "node dist/index.js",
     "tui:dev": "npm run sync:original && tsx src/index.ts"
   },
-  "dependencies": {
-    "sharp": "^0.35.5"
-  },
   "devDependencies": {
     "@types/node": "^22.10.2",
     "tsx": "^4.19.2",

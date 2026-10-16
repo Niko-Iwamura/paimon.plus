@@ -5,8 +5,7 @@ export type CardTemplate = { id: string; fields: CardField[]; link: string; edit
 
 const source = () => readFileSync(new URL('./generated/player-card-data.txt', import.meta.url), 'utf8')
 
-// Split the original metadata array without executing it (the source imports
-// browser-only image metadata and cannot be loaded directly in Node).
+// Split the original metadata array without executing its browser-only imports.
 const topLevelObjects = (text: string) => {
   const arrayStart = text.indexOf('= [', text.indexOf('}[]'))
   if (arrayStart < 0) return []
@@ -28,7 +27,7 @@ export const templates = (): CardTemplate[] => {
   const text = source(); if (!text) return []
   return topLevelObjects(text).map((block, index) => {
     const toolId = unquote(block.match(/\btoolId:\s*'([^']+)'/)?.[1])
-    const sample = unquote(block.match(/\bsample:\s*([A-Za-z0-9_]+)/)?.[1])
+    const sample = unquote(block.match(/\bsample:\s*'?([A-Za-z0-9_]+)'?/)?.[1])
     const id = toolId || sample || `template-${index + 1}`
     const fields: CardField[] = []; const seen = new Set<string>(); const fieldPattern = /\btype:\s*'(text|textarea|number|frame|checkbox)'\s*,[\s\S]*?\blabel:\s*'([^']+)'/g
     for (const match of block.matchAll(fieldPattern)) {
