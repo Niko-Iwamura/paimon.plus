@@ -1,0 +1,20 @@
+{
+  "name": "paimon-plus-tui",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync:original": "node scripts/sync-original-data.mjs",
+    "tui:build": "npm run sync:original && tsc -p tsconfig.json && node scripts/copy-generated-assets.mjs",
+    "tui:test": "npm run tui:build && node scripts/smoke.mjs",
+    "tui:start": "node dist/index.js",
+    "tui:dev": "npm run sync:original && tsx src/index.ts"
+  },
+  "dependencies": {
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
